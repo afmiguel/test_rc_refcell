@@ -7,6 +7,13 @@ struct SharedData {
     value: i32, // A mutable piece of data
 }
 
+impl Drop for SharedData{
+    fn drop(&mut self) {
+        println!("\n++++ Dropping SharedData");
+        self.display();
+    }
+}
+
 impl SharedData {
     fn new(id: &str, initial_value: i32) -> Self {
         SharedData {
